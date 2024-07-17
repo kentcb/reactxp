@@ -18,8 +18,8 @@ export class NetInfo extends Interfaces.NetInfo {
             this.connectivityChangedEvent.fire(navigator.onLine);
         };
 
-        // Avoid accessing window if it's not defined (for test environment).
-        if (typeof(window) !== 'undefined') {
+        // Avoid accessing window.addEventListener if it's not defined (for test and native environments).
+        if (typeof(window) !== 'undefined' && window.addEventListener) {
             window.addEventListener('online', onEventOccuredHandler);
             window.addEventListener('offline', onEventOccuredHandler);
         }
